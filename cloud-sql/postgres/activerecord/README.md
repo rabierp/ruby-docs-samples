@@ -149,6 +149,12 @@ To deploy to App Engine Standard, run the following command:
 gcloud app deploy app.standard.yaml
 ```
 
+If you're getting a server error message when connecting to the service, then add the appengine gem and migrate the DB:
+```bash
+bundle add appengine
+cp -p app.standard.yaml app.yaml
+bundle exec rake appengine:exec -- bundle exec rake db:migrate
+```
 
 ## Deploy to Google App Engine Flexible
 
